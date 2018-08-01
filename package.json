@@ -1,0 +1,20 @@
+{
+  "name": "suploader-koa",
+  "version": "1.0.0",
+  "description": "koa server side implementation of suploader",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "suploader",
+    "koa"
+  ],
+  "author": "sallerli1",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0"
+  }
+}
