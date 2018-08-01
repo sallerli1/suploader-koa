@@ -53,7 +53,11 @@ function createCb(options) {
             }
         }
 
-        options.saveInfo(info);
+        options.saveInfo(
+            params.file_name, 
+            params.file_size,
+            info
+        );
 
         if (ack >= info.chuckCount - 1) {
             cancatFiles(
