@@ -85,7 +85,7 @@ function createRouter(options) {
     let multer = createMulter(options.dir);
     let cb = createCb(options);
 
-    router.post(options.api, multer, cb);
+    router.post(options.api, multer.single('file'), cb);
     return router
 }
 
