@@ -5,6 +5,10 @@ let cancatFiles = require('./cancat');
 let Router = require("koa-router");
 
 function createCb(options) {
+    options.custom = isType(Function, options.custom) ?
+        options.custom :
+        function () {};
+
     return async function(ctx) {
         let info,
             params = ctx.req.body,
