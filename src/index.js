@@ -4,6 +4,7 @@ let cancatFiles = require('./cancat');
 
 let Router = require("koa-router");
 let path = require('path');
+let fse = require('fs-extra');
 
 function createCb(options) {
     options.custom = isType(Function, options.custom) ?
@@ -39,6 +40,15 @@ function createCb(options) {
             info.fileSize = params.file_size;
             info.chuckSize = params.chuck_size;
             info.chuckCount = Math.ceil(info.fileSize / info.chuckSize);
+
+            let storage = path.resolve(
+                dir,
+                `${params.file_size}-${params.file_name}`
+            );
+
+            if (await fse.exists(storage)) {
+                await fse.remove(storage);
+            }
         }
 
         if (number !== info.last + 1) {
