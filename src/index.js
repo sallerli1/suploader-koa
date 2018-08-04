@@ -12,8 +12,8 @@ function createCb(options) {
 
     return async function(ctx) {
         let info,
-            params = ctx.request.body,
-            file = ctx.request.file,
+            params = ctx.req.body,
+            file = ctx.req.file,
             ack = -1;
 
         let number = parseInt(params.number);
