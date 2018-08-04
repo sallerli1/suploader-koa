@@ -42,7 +42,7 @@ function createCb(options) {
             info.chuckCount = Math.ceil(info.fileSize / info.chuckSize);
 
             let storage = path.resolve(
-                dir,
+                options.dir,
                 `${params.file_size}-${params.file_name}`
             );
 
