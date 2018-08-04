@@ -3,6 +3,7 @@ let createMulter = require("./storage");
 let cancatFiles = require('./cancat');
 
 let Router = require("koa-router");
+let path = require('path');
 
 function createCb(options) {
     options.custom = isType(Function, options.custom) ?
@@ -11,8 +12,8 @@ function createCb(options) {
 
     return async function(ctx) {
         let info,
-            params = ctx.req.body,
-            file = ctx.req.file,
+            params = ctx.request.body,
+            file = ctx.request.file,
             ack = -1;
 
         let number = parseInt(params.number);
@@ -79,7 +80,13 @@ function createCb(options) {
             }
         }
 
-        ctx.body.ack = ack;
+        ctx.body = {
+            ack,
+            path: path.resolve(
+                options.dir,
+                `${params.file_size}-${params.file_name}`
+            )
+        };
     };
 }
 
