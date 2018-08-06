@@ -17,6 +17,7 @@ function createCb(options) {
             file = ctx.req.file,
             ack = -1;
 
+        let finished = false;
         let number = parseInt(params.number);
 
         info = await options.readInfo(
@@ -44,6 +45,8 @@ function createCb(options) {
 
         if (number !== info.last + 1) {
             ack = info.last;
+
+            info.last === info.chuckCount && (finished = true)
             number > info.last &&
                 info.buffer.indexOf(number) < 0 &&
                 info.buffer.push(number);
@@ -65,7 +68,7 @@ function createCb(options) {
             info
         );
 
-        if (ack >= info.chuckCount - 1) {
+        if (ack >= info.chuckCount - 1 && !finished) {
             cancatFiles(
                 options.dir, 
                 params.file_name, 
