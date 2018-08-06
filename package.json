@@ -1,6 +1,6 @@
 {
   "name": "suploader-koa",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "koa server side implementation of suploader",
   "main": "src/index.js",
   "scripts": {
