@@ -40,15 +40,6 @@ function createCb(options) {
             info.fileSize = params.file_size;
             info.chuckSize = params.chuck_size;
             info.chuckCount = Math.ceil(info.fileSize / info.chuckSize);
-
-            let storage = path.resolve(
-                options.dir,
-                `${params.file_size}-${params.file_name}`
-            );
-
-            if (await fse.exists(storage)) {
-                await fse.remove(storage);
-            }
         }
 
         if (number !== info.last + 1) {

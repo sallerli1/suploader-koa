@@ -6,14 +6,17 @@ async function cancatFiles(dir, filename, filesize, cnt) {
         dir,
         `${filesize}-${filename}`
     );
+    let folderPath = path.resolve(
+        dir,
+        `${filesize}-${filename}-dir`
+    );
     let tempFilePath = path.resolve(
         dir,
         filename
     );
     for (let i = 0; i < cnt; i++) {
         let currentPath = path.resolve(
-            dir,
-            `${filesize}-${filename}`,
+            folderPath,
             `${i}-${filename}`
         );
         await fse.appendFile(
@@ -24,7 +27,7 @@ async function cancatFiles(dir, filename, filesize, cnt) {
         await fse.remove(currentPath);
     }
 
-    await fse.remove(filePath);
+    await fse.remove(folderPath);
     await fse.move(tempFilePath, filePath);
 }
 

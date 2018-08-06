@@ -8,7 +8,7 @@ function createMulter (dir) {
         let params = req.body,
             storage = path.resolve(
                 dir,
-                `${params.file_size}-${params.file_name}`
+                `${params.file_size}-${params.file_name}-dir`
             );
 
         if (!(await fse.exists(storage))) {
