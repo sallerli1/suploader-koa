@@ -47,12 +47,6 @@ function createCb(options) {
             number > info.last &&
                 info.buffer.indexOf(number) < 0 &&
                 info.buffer.push(number);
-
-            if (number === info.chuckCount - 1) {
-                ack = ++info.last;
-            } else {
-                ack = info.last;
-            }
         } else {
             ack = ++info.last;
             while (info.buffer.length) {
