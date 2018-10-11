@@ -86,10 +86,7 @@ function createCb(options) {
 
         ctx.body = {
             ack,
-            path: path.resolve(
-                path.dirname(ctx.req.file.path),
-                `${params.file_size}-${params.file_name}`
-            )
+            path: `${params.file_size}-${params.file_name}`
         };
     };
 }
